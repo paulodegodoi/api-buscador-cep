@@ -9,8 +9,7 @@ const fillForm = (jsonData) => {
     $('#estado').val(jsonData.uf)
 }
 
-const isNumber = (number) => /^[0-9]+$/.test(number)
-const validCEP = (cep) => isNumber(cep)
+const validCEP = (cep) => cep.length == 8
 
 const searchCEP = async () => {
 
