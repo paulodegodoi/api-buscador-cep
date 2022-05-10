@@ -1,35 +1,35 @@
-const clearInfo = () => {
-    document.getElementById('logradouro').value = ''
-    document.getElementById('bairro').value = ''
-    document.getElementById('cidade').value = ''
-    document.getElementById('estado').value = ''
+const clearForm = () => {
+    $('input:not(:first)').each((i, e) => $(e).val(''))
 }
 
-const fillCEP = (address) => {
-    document.getElementById('logradouro').value = address.logradouro
-    document.getElementById('bairro').value = address.bairro
-    document.getElementById('cidade').value = address.localidade
-    document.getElementById('estado').value = address.uf
+const fillForm = (jsonData) => {
+    $('#logradouro').val(jsonData.logradouro).css('color', '')
+    $('#bairro').val(jsonData.bairro)
+    $('#cidade').val(jsonData.localidade)
+    $('#estado').val(jsonData.uf)
 }
 
-const cepValido = (cep) => cep.length == 8
+const isNumber = (number) => /^[0-9]+$/.test(number)
+const validCEP = (cep) => isNumber(cep)
 
 const searchCEP = async () => {
+
+    clearForm()
+
+    const cep = $('#cep').val().replace(/-/, '')
+    const url = `http://viacep.com.br/ws/${cep}/json/`
+    if(validCEP(cep)) {
+        const data = await fetch(url)
+        const jsonData = await data.json()
     
-    clearInfo()
-
-    const cep = document.getElementById('cep').value
-    const apiCEP = `http://viacep.com.br/ws/${cep}/json/`
-    
-    if (cepValido(cep)) {
-        const data = await fetch(apiCEP)
-        const address = await data.json()
-
-        if (address.hasOwnProperty('erro')) {
-            document.getElementById('logradouro').value = 'CEP não encontrado!'
-        } else fillCEP(address)
-    } else document.getElementById('logradouro').value = 'CEP inválido!'
-
+        if(jsonData.hasOwnProperty('erro')) {
+            $('#logradouro').val('CEP não encontrado!').css('color', 'red')
+        } else {
+            fillForm(jsonData)
+        }
+    } else {
+        $('#logradouro').val('CEP inválido!').css('color', 'red')
+    }
 }
 
-document.getElementById('cep').addEventListener('focusout', searchCEP)
+$('#verify').click(searchCEP)

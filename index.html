@@ -4,55 +4,47 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+        <link rel="stylesheet" href="style.css" />
         <title>Localiza CEP</title>
-        <style>
-            .container {
-                display: flex;
-                flex-direction: column;
-                /* justify-content: center; */
-                align-items: center;
-                width: 100vw;
-            }
-            .inputbox {
-                width: 50%;
-            }
-            label {
-                position: relative;
-                display: block;
-                width: 50%;
-            }
-
-            label input {
-                position: absolute;
-                left: 18%;
-            }
-        </style>
     </head>
     <body>
+        <h1>API JS - Buscador de CEP</h1>
         <main class="container">
-            <h1>Localizar CEP</h1>
-            <div class="inputbox">
-                <label for="cep">CEP: <input type="number" id="cep" /></label>
+            <div class="row">
+                <div class="inputbox">
+                    <label for="cep">CEP: </label>
+                    <input
+                        type="text"
+                        id="cep"
+                        maxlength="9"
+                        onkeypress="$(this).mask('00000-000')"
+                    />
+                    <button id="verify">Verify</button>
+                </div>
+                <div class="inputbox">
+                    <label for="logradouro">Logradouro: </label>
+                    <input type="text" id="logradouro" class="no-click" />
+                </div>
             </div>
-            <div class="inputbox">
-                <label for="logradouro"
-                    >Logradouro: <input type="text" id="logradouro"
-                /></label>
-            </div>
-            <div class="inputbox">
-                <label for="bairro"
-                    >Bairro: <input type="text" id="bairro"
-                /></label>
-            </div>
-            <div class="inputbox">
-                <label for="cidade"
-                    >Cidade: <input type="text" id="cidade"
-                /></label>
-            </div>
-            <div class="inputbox">
-                <label for="estado"
-                    >Estado: <input type="text" id="estado"
-                /></label>
+            <div class="row">
+                <div class="inputbox">
+                    <label for="bairro">Bairro: </label>
+                    <input type="text" id="bairro" class="no-click" />
+                </div>
+                <div class="inputbox">
+                    <label for="cidade">Cidade: </label>
+                    <input type="text" id="cidade" class="no-click" />
+                </div>
+                <div class="inputbox">
+                    <label for="estado">Estado: </label>
+                    <input type="text" id="estado" class="no-click" />
+                </div>
             </div>
         </main>
         <script src="index.js"></script>
