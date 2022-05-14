@@ -3,10 +3,11 @@ const clearForm = () => {
 }
 
 const fillForm = (jsonData) => {
-    $('#logradouro').val(jsonData.logradouro).css('color', '')
-    $('#bairro').val(jsonData.bairro)
-    $('#cidade').val(jsonData.localidade)
-    $('#estado').val(jsonData.uf)
+    for(const camp in jsonData) {
+        if(document.getElementById(''+camp)) {
+            document.getElementById(''+camp).value = jsonData[camp]
+        }
+    }
 }
 
 const validCEP = (cep) => cep.length == 8
@@ -31,4 +32,4 @@ const searchCEP = async () => {
     }
 }
 
-$('#verify').click(searchCEP)
+$('#cep').on('focusout', searchCEP)

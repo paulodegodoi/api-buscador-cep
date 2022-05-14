@@ -18,14 +18,14 @@
         <main class="container">
             <div class="row">
                 <div class="inputbox">
-                    <label for="cep">CEP: </label>
+                    <label for="cep" class="lbl-cep">CEP: </label>
                     <input
                         type="text"
                         id="cep"
                         maxlength="9"
                         onkeypress="$(this).mask('00000-000')"
                     />
-                    <button id="verify">Verify</button>
+                    <button id="verify">Verificar</button>
                 </div>
                 <div class="inputbox">
                     <label for="logradouro">Logradouro: </label>
@@ -38,12 +38,12 @@
                     <input type="text" id="bairro" class="no-click" />
                 </div>
                 <div class="inputbox">
-                    <label for="cidade">Cidade: </label>
-                    <input type="text" id="cidade" class="no-click" />
+                    <label for="localidade">Cidade: </label>
+                    <input type="text" id="localidade" class="no-click" />
                 </div>
                 <div class="inputbox">
-                    <label for="estado">Estado: </label>
-                    <input type="text" id="estado" class="no-click" />
+                    <label for="uf">Estado: </label>
+                    <input type="text" id="uf" class="no-click" />
                 </div>
             </div>
         </main>

@@ -60,19 +60,19 @@ h1 {
     border: 1px solid white;
 }
 
-.inputbox .no-click {
+.inputbox label:not(.lbl-cep), .inputbox .no-click {
     pointer-events: none;
 }
 
 #verify {
     margin: auto;
-    width: 35%;
+    width: 40%;
     border-radius: 10px;
     margin-top: 5px;
     cursor: pointer;
-    padding: 5px;
+    padding: 5px 10px;
     background-color: rgb(255, 191, 0);
     color: black;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bolder;
 }
